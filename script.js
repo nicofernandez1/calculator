@@ -11,7 +11,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b === 0) {
+        return "OOOPSS!";
+    } else {
+        return a / b;
+    }
 }
 
 function operate(operator, a, b) {
@@ -26,9 +30,9 @@ function operate(operator, a, b) {
     }
 }
 
-let n1;
-let n2;
-let op;
+let n1 = 0;
+let n2 = 0;
+let op = "";
 
 const one = document.querySelector('.one');
 const two = document.querySelector('.two');
@@ -40,8 +44,8 @@ const seven = document.querySelector('.seven');
 const eight = document.querySelector('.eight');
 const nine = document.querySelector('.nine');
 const zero = document.querySelector('.zero');
-
-const display = document.getElementById('display');
+const display = document.querySelector('.display');
+const operation = document.querySelector('.operation');
 const addition = document.querySelector('.addition');
 const subtraction = document.querySelector('.subtraction');
 const multiplication = document.querySelector('.multiplication');
@@ -51,70 +55,106 @@ const clear = document.querySelector('.clear');
 
 one.addEventListener('click', () => {
     display.textContent += 1;
-})
+});
 two.addEventListener('click', () => {
     display.textContent += 2;
-})
+});
 three.addEventListener('click', () => {
     display.textContent += 3;
-})
+});
 four.addEventListener('click', () => {
     display.textContent += 4;
-})
+});
 five.addEventListener('click', () => {
     display.textContent += 5;
-})
+});
 six.addEventListener('click', () => {
     display.textContent += 6;
-})
+});
 seven.addEventListener('click', () => {
     display.textContent += 7;
-})
+});
 eight.addEventListener('click', () => {
     display.textContent += 8;
-})
+});
 nine.addEventListener('click', () => {
     display.textContent += 9;
-})
+});
 zero.addEventListener('click', () => {
     display.textContent += 0;
-})
+});
 
 
 addition.addEventListener('click', () => {
+    
+    if (op === "+" || op === "-" || op === "*" || op === "/") {
+        n2 = Number(display.textContent);
+        display.textContent = operate(op, n1, n2);
+        operation.textContent = "";
+    }
+    
     n1 = Number(display.textContent);
-    console.log(n1);
     display.textContent = "";
     op = "+";
-})
+    operation.textContent = `${n1} ${op}`;
+    
+});
+
 subtraction.addEventListener('click', () => {
+    
+    if (op === "+" || op === "-" || op === "*" || op === "/") {
+        n2 = Number(display.textContent);
+        display.textContent = operate(op, n1, n2);
+        operation.textContent = "";
+    }
+    
     n1 = Number(display.textContent);
-    console.log(n1);
     display.textContent = "";
     op = "-";
-})
+    operation.textContent = `${n1} ${op}`;
+
+});
+
 multiplication.addEventListener('click', () => {
+    
+    if (op === "+" || op === "-" || op === "*" || op === "/") {
+        n2 = Number(display.textContent);
+        display.textContent = operate(op, n1, n2);
+        operation.textContent = "";
+    }
+    
     n1 = Number(display.textContent);
-    console.log(n1);
     display.textContent = "";
     op = "*";
-})
+    operation.textContent = `${n1} ${op}`;
+
+});
+
 division.addEventListener('click', () => {
+    
+    if (op === "+" || op === "-" || op === "*" || op === "/") {
+        n2 = Number(display.textContent);
+        display.textContent = operate(op, n1, n2);
+        operation.textContent = "";
+    }
+    
     n1 = Number(display.textContent);
-    console.log(n1);
     display.textContent = "";
     op = "/";
-})
+    operation.textContent = `${n1} ${op}`;
+
+});
 
 equal.addEventListener('click', () => {
     n2 = Number(display.textContent);
-    console.log(n2);
     display.textContent = operate(op, n1, n2);
-})
+    operation.textContent = "";
+});
 
 clear.addEventListener('click', () => {
     n1 = 0;
     n2 = 0;
     op = "";
     display.textContent = "";
-})
+    operation.textContent = "";
+});
