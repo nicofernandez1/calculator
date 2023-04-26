@@ -33,6 +33,7 @@ function operate(operator, a, b) {
 let n1 = 0;
 let n2 = 0;
 let op = "";
+let equalPressed = false;
 
 const one = document.querySelector('.one');
 const two = document.querySelector('.two');
@@ -54,101 +55,140 @@ const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 
 one.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 1;
 });
+
 two.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 2;
 });
+
 three.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 3;
 });
+
 four.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 4;
 });
+
 five.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 5;
 });
+
 six.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 6;
 });
+
 seven.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 7;
 });
+
 eight.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 8;
 });
+
 nine.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 9;
 });
+
 zero.addEventListener('click', () => {
+    if (equalPressed) {
+        display.textContent = "";
+        equalPressed = false;
+    }
     display.textContent += 0;
 });
 
-
 addition.addEventListener('click', () => {
-    
     if (op === "+" || op === "-" || op === "*" || op === "/") {
         n2 = Number(display.textContent);
         display.textContent = operate(op, n1, n2);
         operation.textContent = "";
     }
-    
     n1 = Number(display.textContent);
     display.textContent = "";
     op = "+";
     operation.textContent = `${n1} ${op}`;
-    
 });
 
 subtraction.addEventListener('click', () => {
-    
     if (op === "+" || op === "-" || op === "*" || op === "/") {
         n2 = Number(display.textContent);
         display.textContent = operate(op, n1, n2);
         operation.textContent = "";
     }
-    
     n1 = Number(display.textContent);
     display.textContent = "";
     op = "-";
     operation.textContent = `${n1} ${op}`;
-
 });
 
 multiplication.addEventListener('click', () => {
-    
     if (op === "+" || op === "-" || op === "*" || op === "/") {
         n2 = Number(display.textContent);
         display.textContent = operate(op, n1, n2);
         operation.textContent = "";
     }
-    
     n1 = Number(display.textContent);
     display.textContent = "";
     op = "*";
     operation.textContent = `${n1} ${op}`;
-
 });
 
 division.addEventListener('click', () => {
-    
     if (op === "+" || op === "-" || op === "*" || op === "/") {
         n2 = Number(display.textContent);
         display.textContent = operate(op, n1, n2);
         operation.textContent = "";
     }
-    
     n1 = Number(display.textContent);
     display.textContent = "";
     op = "/";
     operation.textContent = `${n1} ${op}`;
-
 });
 
 equal.addEventListener('click', () => {
+    if (op === "") return;
     n2 = Number(display.textContent);
     display.textContent = operate(op, n1, n2);
     operation.textContent = "";
+    op = "";
+    equalPressed = true;
 });
 
 clear.addEventListener('click', () => {
